@@ -1,4 +1,5 @@
 import turtle
+import os
 
 wn = turtle.Screen()
 wn.title('pong by Daniil_Dn')
@@ -94,6 +95,7 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        os.system('afplay bounce.wav')
 
     if ball.ycor() < -290:
         ball.sety(-290)
