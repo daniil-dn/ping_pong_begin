@@ -6,6 +6,10 @@ wn.bgcolor('black')
 wn.setup(width=800, height=600)
 wn.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
@@ -34,6 +38,15 @@ ball.penup()
 ball.goto(0, 0)
 ball.dx = 2
 ball.dy = 2
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0 Player B: 0", align='center', font=("Courier", 24, "normal"))
 
 
 # Functions
@@ -81,11 +94,21 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
 
-    if ball.xcor() > 390 or ball.xcor() < -390:
+    if ball.xcor() > 390:
+        score_a += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align='center', font=("Courier", 24, "normal"))
+        ball.goto(0, 0)
+        ball.dx *= -1
+    if ball.xcor() < -390:
+        score_b += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align='center', font=("Courier", 24, "normal"))
         ball.goto(0, 0)
         ball.dx *= -1
 
