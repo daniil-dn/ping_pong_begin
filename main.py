@@ -73,3 +73,20 @@ wn.onkeypress(paddle_b_down, "Down")
 while True:
     wn.update()
 
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # Border collision
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390 or ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+    # Paddle and ball collisions
